@@ -72,7 +72,7 @@ class r_stuff{
     require => Exec['sys_update'],
     ensure => 'installed'
   } ->
-  exec{'dl rstudio':
+  exec{'download rstudio':
     command => 'wget http://download1.rstudio.org/rstudio-0.98.953-i386.deb',
     cwd => "/home/${username}",
     creates => "/home/${username}/rstudio-0.98.953-i386.deb",
