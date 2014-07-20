@@ -8,5 +8,3 @@ In addition to the base Ubuntu (14.04 LTS) box, these are some things that get a
 - R (Version 3.X)
 - RStudio
 - Google Chrome Browser
-
-### THIS IS NOT READY YET!
