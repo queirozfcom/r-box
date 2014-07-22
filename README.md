@@ -12,8 +12,11 @@ In order to get a fully functional Ubuntu VM with some starting tools for you to
  
 **Once you start the process `vagrant up`) it will probably take some time (maybe 20 to 30 mins) to download the image and all the dependencies.**
 
-**Don't touch the VM until it looks like this**
-http://i.imgur.com/LlYg51u.png
+**Don't touch the VM until it looks like this:**
+
+![VM Screenshot](http://i.imgur.com/LlYg51u.png)
+
+
 Once it does, login using username/password = vagrant/vagrant.
 
 In addition to the base Ubuntu (14.04 LTS) box, these are some things that get added:
