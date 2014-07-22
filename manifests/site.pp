@@ -52,6 +52,9 @@ class chrome{
     cwd => "/home/${username}",
     creates => "/home/${username}google-chrome-stable_current_i386.deb",
   } ->
+  exec{'install stuff needed for chrome':
+      command =>'apt-get install libappindicator1 libdbusmenu-gtk4 libfile-desktopentry-perl libfile-mimeinfo-perl libindicator7 libxss1 xdg-utils --assume-yes',
+  } ->
   exec{'install chrome':
     command => 'dpkg -i google-chrome-stable_current_i386.deb',
     cwd => "/home/${username}",
@@ -84,7 +87,8 @@ class r_stuff{
   } ->
   exec{'install rstudio':
     require => Class['fix_broken'],  
-    command => 'dpkg -i http://download1.rstudio.org/rstudio-0.98.953-i386.deb',
+    command => 'dpkg -i rstudio-0.98.953-i386.deb',
+    creates => '/usr/bin/rstudio',
   } ->
   exec{'add shortcut':
     command => "ln -s /usr/bin/rstudio /home/${username}/Desktop/rstudio",
