@@ -18,7 +18,7 @@ class git {
 }
 
 class basic_gui{
-  package{'xfce':
+  package{'xfce4'':
     require => Exec['sys_update'],
     ensure => 'installed'       
   } ->
