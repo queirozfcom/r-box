@@ -17,7 +17,7 @@ In order to get a fully functional Ubuntu VM with some starting tools for you to
 ![VM Screenshot](http://i.imgur.com/LlYg51u.png)
 
 
-Once it does, login using username/password = vagrant/vagrant.
+**Once it does**, login using username/password = vagrant/vagrant.
 
 In addition to the base Ubuntu (14.04 LTS) box, these are some things that get added:
 
