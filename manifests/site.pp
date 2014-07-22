@@ -61,10 +61,12 @@ class chrome{
     creates => "/usr/bin/google-chrome",
   } -> 
   exec{'add shortcuts to desktop':
+    require => Class['home'],
     command => "ln -s /usr/bin/google-chrome /home/${username}/Desktop/google-chrome",
     creates => "/home/${username}/Desktop/google-chrome",
   } ->
   exec{'set permissions':
+    require => Class['home'],
     command =>"chmod +x /home/${username}/Desktop/*",
     provider => 'shell',
   }
@@ -86,15 +88,16 @@ class r_stuff{
     user => "${username}",
   } ->
   exec{'install rstudio':
-    require => Class['fix_broken'],  
     command => 'dpkg -i rstudio-0.98.953-i386.deb',
     creates => '/usr/bin/rstudio',
   } ->
   exec{'add shortcut':
+    require => Class['home'],
     command => "ln -s /usr/bin/rstudio /home/${username}/Desktop/rstudio",
     creates => "/home/${username}/Desktop/rstudio",
   } ->
   exec{'set permissions on desktop':
+    require => Class['home'],
     command =>"chmod +x /home/${username}/Desktop/rstudio",
     provider => 'shell',  
   } ->
@@ -111,8 +114,24 @@ class r_stuff{
 
 }
 
+class home{
+  file{"/home/${username}/Desktop":
+    ensure => 'directory',
+    owner => "${username}",  
+  }
+  file{"/home/${username}/Downloads":
+    ensure => 'directory',
+    owner => "${username}",  
+  }
+  file{"/home/${username}/Documents":
+    ensure => 'directory',
+    owner => "${username}",  
+  }
+}
+
 include git
 include fix_broken
 include chrome
 include basic_gui
 include r_stuff
+include home
