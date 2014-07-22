@@ -82,7 +82,14 @@ class r_stuff{
     require => Class['fix_broken'],  
     command => 'dpkg -i http://download1.rstudio.org/rstudio-0.98.953-i386.deb',
   } ->
-
+  exec{'add shortcut':
+    command => "ln -s /usr/bin/rstudio /home/${username}/Desktop/rstudio",
+    creates => "/home/${username}/Desktop/rstudio",
+  } ->
+  exec{'set permissions on desktop':
+    command =>"chmod +x /home/${username}/Desktop/rstudio",
+    provider => 'shell',  
+  } ->
   # these are needed for stuff like devtools
   package{'libcurl4-gnutls-dev':
     ensure => 'installed',
