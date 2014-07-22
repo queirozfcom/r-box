@@ -49,12 +49,12 @@ class chrome{
   require fix_broken
   exec{'download chrome deb':
     command => 'wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb',
-    cwd => "/home/${username}/Downloads",
-    creates => "/home/${username}/Downloads/google-chrome-stable_current_i386.deb",
+    cwd => "/home/${username}",
+    creates => "/home/${username}google-chrome-stable_current_i386.deb",
   } ->
   exec{'install chrome':
     command => 'dpkg -i google-chrome-stable_current_i386.deb',
-    cwd => "/home/${username}/Downloads",
+    cwd => "/home/${username}",
     creates => "/usr/bin/google-chrome",
   } -> 
   exec{'add shortcuts to desktop':
@@ -70,6 +70,10 @@ class chrome{
 class r_stuff{
   package{'r-base':
     require => Exec['sys_update'],
+    ensure => 'installed'
+  } ->
+  # required for rstudio
+  package{'libjpeg62':
     ensure => 'installed'
   } ->
   exec{'download rstudio':
