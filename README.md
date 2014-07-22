@@ -10,7 +10,7 @@ In order to get a fully functional Ubuntu VM with some starting tools for you to
  - Download Vagrant
  - Download (or `git clone`) this project and then run `vagrant up` in the directory where you downloaded it. 
  
-**Once you start the process `vagrant up`) it will probably take some time (maybe 20 to 30 mins) to download the image and all the dependencies.**
+**Once you start the process (`vagrant up`) it will probably take some time (maybe 20 to 30 mins) to download the image and all the dependencies.**
 
 **Don't touch the VM until it looks like this:**
 
